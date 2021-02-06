@@ -36,10 +36,23 @@ app.use(express.static("public"));
 const usersRoutes = require("./routes/users");
 const widgetsRoutes = require("./routes/widgets");
 
+// 1. REQUIRING OUR FUNCTIONS
+const mapsRoutes = require("./routes/maps");
+const registerRoutes = require("./routes/register");
+const loginRoutes = require("./routes/login");
+const profileRoutes = require("./routes/profile");
+
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
 app.use("/api/users", usersRoutes(db));
 app.use("/api/widgets", widgetsRoutes(db));
+
+//2. APP.USE FOR OUR FUNCTIONS
+app.use(mapsRoutes);
+app.use(registerRoutes);
+app.use(loginRoutes);
+app.use(profileRoutes);
+
 // Note: mount other resources here, using the same pattern above
 
 
@@ -49,6 +62,10 @@ app.use("/api/widgets", widgetsRoutes(db));
 app.get("/", (req, res) => {
   res.render("index");
 });
+
+// app.get("/maps", (req, res) => {
+//   res.json("HELLO!!");
+// });
 
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);
