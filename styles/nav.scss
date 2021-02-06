@@ -1,0 +1,18 @@
+nav {
+  position: fixed;
+  display: flex;
+  justify-content: space-between;
+  top: 0;
+  left: 0;
+  height: 120px;
+  width: 100%;
+  z-index: 2;
+  background-color: #98fb98;
+  color: #ffffff;
+}
+
+nav #brand {
+  font-family: 'Rancho', cursive;
+  font-size: 1.3em;
+  padding: 1.5em;
+}
