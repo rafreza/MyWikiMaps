@@ -1,5 +1,48 @@
 LHL Node Skeleton
 =========
+LHL Node Skeleton - WikiMap
+=========
+
+## User Story
+
+"As I user I want to see all the available maps because I want to quickly select or create a map that matches my interests."
+
+ROLE: User wants to view/create a map
+GOAL: Share/Discover/vizualize potential spots and locations based on an interest.
+BENEFIT: Build a collaborative space where users can ultiamtely share places of interest based on certain niches.
+
+## Features - SPA
+1. Pages:
+  - Login/Register
+  - Home
+  - Profiles (Includes )
+  -
+- Features:
+  - User Auth
+  - Create/View/Editing a map
+    - General Map Form: (Title, Description, Image)
+    - P.O.I Form: (Title, Description, Image)
+      - Users can point on the map to start adding to list
+    - Add/remove/edit points on map
+  - Favourite a map
+  - Profile: Username, Location, Display Photo(?)
+    - View favourites
+    - View own maps
+  
+
+A web app that allows users to collaboratively create maps which list multiple "points". For example: "Best Places to Eat Around Town" 
+
+## Routes 
+
+1. /HOME (GET)
+2. /REGISTER (GET)
+3. /REGISTER (POST)
+3. /LOGIN (GET & POST)
+4. /PROFILE (GET & POST)
+5. /PROFILE/CREATE (GET & POST)
+6. /PROFILE/EDIT (GET & POST)
+7. /PROFILE/EDIT (DELET) 
+8. /PROFILE/FAVOURITES
 
 ## Project Setup
 
