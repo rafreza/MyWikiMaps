@@ -6,5 +6,5 @@ CREATE TABLE maps (
   title VARCHAR(255) NOT NULL,
   description TEXT,
   image_url VARCHAR(255) NOT NULL,
-  active BOOLEAN
+  active BOOLEAN NOT NULL DEFAULT TRUE
 );
