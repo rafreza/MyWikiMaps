@@ -14,7 +14,12 @@
   <body>
     <body>
       <h1>Register</h1>
-<!-- MUST FIX FORM ACTION ROUTE -->
+
+      <ul>
+        <% if (typeof errors != 'undefined') { %> <% errors.forEach(error => { %>
+          <li><%= error.message %></li>
+          <% }) %> <% } %>
+      </ul>
       <form action="/register" method="POST">
         <div>
           <input type="name" name="name" placeholder="Enter name" required>
