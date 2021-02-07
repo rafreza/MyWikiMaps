@@ -46,21 +46,19 @@
 
     <nav>
       <span class="top-nav-bar">
-        <a href="#" id=brand>WikiMaps</a>
+        <a href="/" id=brand>WikiMaps</a>
         <div class="right">
           <a>Login</a>
           <a>Register</a>
-          <a href="http://localhost:8080/Maps">My Maps</a>
+          <a href="#">My Maps</a>
           <a>+</a>
         </div>
       </span>
     </nav>
-    <section class="maps">
+
     <div id="map"></div>
     <div id="map2"></div>
-    </section>
     <script>
-
 
       const map = L.map('map',{
       center: [43.64701, -79.39425],
@@ -71,17 +69,16 @@
       attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
       }).addTo(map);
 
-      const map2 = L.map('map2',{
-      center: [43.64701, -79.39425],
-      zoom: 15
-      });
+      let marker = L.marker([43.6555, -79.4138]).addTo(map);
+      let marker2 = L.marker([43.6568, -79.4069]).addTo(map);
+      let marker3 = L.marker([43.6550, -79.4144]).addTo(map);
 
-      L.tileLayer('https://api.mapbox.com/styles/v1/antotm99/ckkufbk2v2rkf17pewagzbfdo/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoiYW50b3RtOTkiLCJhIjoiY2trdWVueTNuMHJiNzJucnVvcmRvczBoNiJ9.xCn9pVxKwusP1dHXrOJhNA', {
-      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-      }).addTo(map2);
+      let popup = marker.bindPopup('Cafe Diplomatico');
+      let popup2 = marker2.bindPopup('The Little Jerry');
+      let popup3 = marker3.bindPopup('The Walton');
+
 
   </script>
-
 
 
 </html>
