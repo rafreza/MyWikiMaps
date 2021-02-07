@@ -2,7 +2,7 @@ const express = require('express');
 const router  = express.Router();
 
 router.get("/login", (req, res) => {
-  res.send("LOGIN ROUTE");
+  res.render("login");
 
 });
 
