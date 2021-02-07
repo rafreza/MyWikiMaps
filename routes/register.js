@@ -1,6 +1,7 @@
 const express = require('express');
 const router  = express.Router();
 const { pool } = require('../dbConfig')
+const bcrypt = require('bcrypt')
 
 
 router.get("/register", (req, res) => {
@@ -8,7 +9,7 @@ router.get("/register", (req, res) => {
   res.render("register");
 });
 
-router.post("/register", (req, res) => {
+router.post("/register", async (req, res) => {
  let { name, email, password } = req.body;
  console.log({ name,
   email,
@@ -27,7 +28,26 @@ router.post("/register", (req, res) => {
 
   if(errors.length > 0) {
     res.render("register", { errors });
+  } else {
+    //form validation passed
+
+    let hashedPassword = await bcrypt.hash(password, 10);
+    console.log(hashedPassword);
   }
+
+  pool.query(
+    `SELECT * FROM users
+    WHERE email = $1`, [email], (err, results) => {
+      if (err) {
+        throw err
+      }
+      console.log(results.rows)
+    }
+  )
+
+
+
+
 });
 
 module.exports = router;
