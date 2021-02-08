@@ -36,6 +36,14 @@
         <li><%= messages.success_msg %></li>
         <% } %>
 
+        <% if(messages.failure_msg) {%>
+          <li><%= messages.failure_msg %></li>
+          <% } %>
+
+          <% if(messages.failureEmail_msg) {%>
+            <li><%= messages.failureEmail_msg %></li>
+            <% } %>
+
       <form action="/login" method="POST">
         <div>
           <input type="email" name="email" placeholder="Enter email" required>
