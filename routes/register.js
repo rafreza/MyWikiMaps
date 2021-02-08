@@ -5,11 +5,7 @@ const bcrypt = require('bcrypt')
 
 const app = express();
 
-
-
-
 router.get("/register", (req, res) => {
-  // res.send("REGISTER ROUTE");
   res.render("register");
 });
 
@@ -19,6 +15,7 @@ router.post("/register", async (req, res) => {
   email,
   password })
 
+//validation steps to insure inputs are valid
 
   let errors = [];
 
@@ -34,46 +31,43 @@ router.post("/register", async (req, res) => {
     res.render("register", { errors });
   } else {
 
-    //form validation passed
+  // if form validation passed, ACCESS DB ==>
 
     let hashedPassword = await bcrypt.hash(password, 10);
     console.log(hashedPassword);
 
+    //check if email already exists in DB =>
 
-  pool.query(
-    `SELECT * FROM users
-    WHERE email = $1`, [email], (err, results) => {
-      if (err) {
-        throw err
-      }
-      console.log(results.rows);
+    const queryString = `SELECT * FROM users
+    WHERE email = $1`
 
-      if(results.rows.length > 0 ) {
-        errors.push({ message: "User already exists"});
-        res.render("register", { errors });
+   pool.query(queryString, [email]).then(results => {
+
+    if(results.rows.length > 0 ) {
+      errors.push({ message: "User already exists"});
+      res.render("register", { errors });
       } else {
-        //no user in db--> registration process continued
-        pool.query(`
+
+    //if no user in db--> registration process continued
+
+        const queryAddNewUser = `
         INSERT INTO users (name, email, password)
         VALUES ($1, $2, $3)
-        RETURNING id, password`, [name, email, hashedPassword], (err, results) => {
-          if(err) {
-            throw err
-          }
+        RETURNING id, password`
+
+        pool.query(queryAddNewUser, [name, email, hashedPassword])
+        .then( results => {
           console.log(results.rows)
-          req.flash('success_msg', "Congradulations! You are now registered.")
+          req.flash('success_msg', "Congradulations, you are now registered. Please log-in")
           res.redirect('/login');
+
         })
-
-
-
+        .catch(err => { console.log('query error:', err)});
       }
-    }
-  )
+   })
+    .catch( err => { console.log('query error:', err)});
   }
-
-
-
 });
 
 module.exports = router;
+
