@@ -29,11 +29,12 @@ router.post("/register", async (req, res) => {
   if(errors.length > 0) {
     res.render("register", { errors });
   } else {
+
     //form validation passed
 
     let hashedPassword = await bcrypt.hash(password, 10);
     console.log(hashedPassword);
-  }
+
 
   pool.query(
     `SELECT * FROM users
@@ -41,10 +42,15 @@ router.post("/register", async (req, res) => {
       if (err) {
         throw err
       }
-      console.log(results.rows)
+      console.log(results.rows);
+
+      if(results.rows.length > 0 ) {
+        errors.push({ message: "Email already registered"});
+        res.render("register", { errors });
+      }
     }
   )
-
+  }
 
 
 

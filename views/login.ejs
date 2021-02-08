@@ -14,7 +14,11 @@
   <body>
     <body>
       <h1>Log-In</h1>
-<!-- MUST FIX FORM ACTION ROUTE -->
+
+      <% if(messages.success_msg) {%>
+        <li><%= messages.success_msg %></li>
+        <% } %>
+
       <form action="/login" method="POST">
         <div>
           <input type="email" name="email" placeholder="Enter email" required>
