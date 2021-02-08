@@ -12,6 +12,7 @@ nav {
 }
 
 .top-nav-bar{
+  width: 100%;
   display: flex;
   justify-content: space-between;
 }
@@ -28,6 +29,5 @@ nav #brand {
   justify-content: space-evenly;
   margin: 20px;
   padding: 1.5em;
-
-
+  float: right;
 }
