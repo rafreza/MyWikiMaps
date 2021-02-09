@@ -29,25 +29,8 @@
   <body>
 
     <%- include('partials/_header') %>
+    <%- include('partials/map-form') %>
 
-    <form id="map-form" action="/api/maps" method = "POST" >
-      <p>Create New Map</p>
-      <div>
-        <input name='title' placeholder="Title">
-      </div>
-
-      <div>
-          <input type ="text" name="description" placeholder="Description">
-        </div>
-
-        <div>
-          <input type ="text" name="image_url" placeholder="Image Url">
-        </div>
-      <div>
-          <button type ='submit' href="/profile">Create</button>
-          <a id="login-form__cancel" href="/maps">Cancel</a>
-      </div>
-    </form>
 
 
 
