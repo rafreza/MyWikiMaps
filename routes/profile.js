@@ -2,7 +2,8 @@ const express = require('express');
 const router  = express.Router();
 
 router.get("/profile", (req, res) => {
-  res.render("profile");
+  const templateVars = { user_id: req.session['user_id'], email: req.session['email']}
+  res.render("profile", templateVars);
 
 });
 
