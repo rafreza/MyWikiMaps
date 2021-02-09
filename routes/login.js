@@ -35,16 +35,16 @@ router.post("/login", (req, res) => {
             /// Adding into session object ---user_id = key --> and results.rows[0].id = value
           req.session['user_id'] = results.rows[0].id;
           req.session['email'] = results.rows[0].email;
-          res.redirect("/maps");
+          res.redirect("/");
 
         } else {
           //if password not correct
-          req.flash('failure_msg',"Password incorrect, please try again!")
+          req.flash('failure_msg',"Password incorrect, please try again.")
           res.redirect('/login')
         }
      // IF USER DOES NOT EXIST IN DB =>
       } else {
-          req.flash('failureEmail_msg',"Email not found, please register!")
+          req.flash('failureEmail_msg',"Email not found, please register.")
           res.redirect('/login');
         }
     })
