@@ -31,7 +31,6 @@
     <%- include('partials/_header') %>
 
 
-  <div class="create-new-map">
 
     <div id="map"></div>
 
@@ -39,17 +38,6 @@
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAcgyKfKOGItTDzqDIuXCxXiaAZRLK-TjA&callback=initMap"
     async defer></script>
 
-    <div id='create'>
-      <h1>Create a List</h1>
-      <form action="/maps" method="POST">
-        <div>
-          <input type="text" name="title" placeholder="title" required>
-        </div>
-          <input type="text" name="description" placeholder="Type what your list is all about" required>
-          <div>
-            <button type="submit">Save</button>
-          </div>
-      </div>
     </div>
   </body>
 </html>

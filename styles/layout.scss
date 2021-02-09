@@ -1,13 +1,33 @@
 // See: https://sass-lang.com/
 
+.error-message {
+  color: red;
+  padding-bottom: 5%;
+}
+
 body {
   background-color: #EEE;
 }
 
-
-
   h1 {
     color: #244751;
+  }
+
+  .button-to-authenticate:hover {background-color: #244751}
+
+  .button-to-authenticate {
+    padding: 10px 30px;
+    font-size: 15px;
+    font-family:'Gudea', sans-serif;
+    font-weight: 600;
+    text-align: center;
+    cursor: pointer;
+    outline: none;
+    color: #fff;
+    background-color: #4CAF50;
+    border: none;
+    border-radius: 15px;
+    margin: 5%;
   }
 
 
@@ -15,8 +35,6 @@ body {
 .create-new-map {
   display: flex;
   justify-content: center;
-
-
 }
 
 #map {
@@ -32,6 +50,7 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  font-family:'Gudea', sans-serif
 }
 
 #form.login {
@@ -39,23 +58,19 @@ body {
   height: 100%;
   margin-top: 5em;
   margin-right: 10%;
-  font-family: 'Gudea', sans-serif;
 }
 
 #form.register {
   width: 100%;
   height: 100%;
   margin-top: 5em;
-  margin-right: 10%;
-  font-family: 'Gudea', sans-serif;
-  color: red;
+  color: #244751;
 }
 
 .input-field {
   margin: 5px;
-    font-family: 'Gudea', sans-serif;;
-    font-weight: 100;
-    font-style: italic;
+  font-weight: 100;
+  font-style: italic;
 }
 
 #create {

@@ -65,7 +65,6 @@ app.use("/api/users", usersRoutes(db));
 app.use("/api/widgets", widgetsRoutes(db));
 
 
-
 //2. APP.USE FOR OUR FUNCTIONS
 app.use(mapsRoutes);
 app.use(registerRoutes);
