@@ -15,7 +15,7 @@ router.get("/profile", (req, res) => {
     return pool.query(queryString, queryParams).then(res => res.rows);
   };
 
-  getAllMaps()
+  getMaps()
   .then(maps => {
     res.send({ maps }).catch(err => {
       res.status(500).json({ error: err.message });
