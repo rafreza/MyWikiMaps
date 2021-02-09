@@ -7,8 +7,6 @@ const addMarker = (location, map) => {
 };
 
 window.initMap = mapid => {
-  console.log(mapid);
-  console.log(document.getElementById(mapid));
   mapMaker("map");
 };
 
