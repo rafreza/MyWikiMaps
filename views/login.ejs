@@ -6,6 +6,7 @@
     <!-- Google Fonts-->
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Rancho&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Gudea:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
     <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
@@ -20,7 +21,8 @@
     <%- include('partials/_header') %>
 
     <body>
-      <h1>Log-In</h1>
+      <span id="form">
+      <h1 id="form" class="login">Log-In</h1>
 
       <% if(messages.success_msg) {%>
         <li><%= messages.success_msg %></li>
@@ -36,13 +38,14 @@
 
       <form action="/login" method="POST">
         <div>
-          <input type="email" name="email" placeholder="Enter email" required>
+          <input class="input-field" type="email" name="email" placeholder="Enter email" required>
         </div>
-          <input type="password" name="password" placeholder="Password" required>
+          <input class="input-field" type="password" name="password" placeholder="Password" required>
           <div>
-            <button type="submit">Log-in</button>
+            <button class="input-field" type="submit">Log-in</button>
           </div>
-<a href="/register">Not yet Registered? Create an accout</a>
+        </span>
+<a class="input-field" href="/register">Not yet Registered? Create an accout</a>
     </form>
     </body>
     </html>

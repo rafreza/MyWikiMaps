@@ -20,26 +20,30 @@
     <%- include('partials/_header') %>
 
     <body>
-      <h1>Register</h1>
+      <span id="form">
+      <h1 id= "form" class="register">Register</h1>
 
       <ul>
         <% if (typeof errors != 'undefined') { %> <% errors.forEach(error => { %>
           <li><%= error.message %></li>
           <% }) %> <% } %>
-
       </ul>
       <form action="/register" method="POST">
         <div>
-          <input type="name" name="name" placeholder="Enter name" required>
+          <input class="input-field" type="name" name="name" placeholder="Enter name" required>
         </div>
         <div>
-          <input type="email" name="email" placeholder="Enter email" required>
+          <input class="input-field" type="email" name="email" placeholder="Enter email" required>
         </div>
-          <input type="password" name="password" placeholder="Password" required>
+          <input class="input-field" type="password" name="password" placeholder="Password" required>
           <div>
-            <button type="submit">Register</button>
+            <button class="input-field" type="submit">Register</button>
           </div>
-<a href="/login">Already Registered?</a>
+        </span>
+        <div>
+          <a class="input-field" href="/login">Already Registered?</a>
+        </div>
+
     </form>
     </body>
     </html>
