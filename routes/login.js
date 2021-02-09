@@ -5,7 +5,8 @@ const bcrypt = require('bcrypt')
 const app = express();
 
 router.get("/login", (req, res) => {
-  res.render("login");
+  const templateVars = { user_id: undefined , email: undefined }
+  res.render("login", templateVars);
 });
 
 router.post("/login", (req, res) => {
@@ -31,8 +32,9 @@ router.post("/login", (req, res) => {
         if(bcrypt.compareSync(password, hashedPassword)) {
           console.log("we're in")
 
-
+            /// Adding into session object ---user_id = key --> and results.rows[0].id = value
           req.session['user_id'] = results.rows[0].id;
+          req.session['email'] = results.rows[0].email;
           res.redirect("/maps");
 
         } else {

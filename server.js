@@ -63,13 +63,7 @@ const logoutRoutes = require("./routes/logout");
 // Note: Feel free to replace the example routes below with your own
 app.use("/api/users", usersRoutes(db));
 app.use("/api/widgets", widgetsRoutes(db));
-// app.use(session({
-//   secret: 'secret',
-//   resave: false,
-//   saveUninitialized: false
-// }));
 
-// app.use(flash());
 
 
 //2. APP.USE FOR OUR FUNCTIONS
@@ -89,9 +83,7 @@ app.get("/", (req, res) => {
   res.render("index");
 });
 
-// app.get("/maps", (req, res) => {
-//   res.json("HELLO!!");
-// });
+
 
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);
