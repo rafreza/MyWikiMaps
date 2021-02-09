@@ -1,9 +1,8 @@
 const map = L.map('map',{
   center: [43.64701, -79.39425],
   zoom: 15
-  });
-
-  let template = '<form id="popup-form">\
+});
+  let template = '<form id="popup-form" action="/maps" method="POST">\
   <label for="input-name">Name:</label>\
   <input id="input-name" class="popup-input" type="text"/><br>\
   <label for="input-description">Description:</label/>\
@@ -27,11 +26,10 @@ const map = L.map('map',{
 
   function addMarkerInfo(e){
     // Add marker to map at click location; add popup window
-    marker = new L.Marker(e.latlng, {draggable:true});
+    marker = new L.Marker(e.latlng);
     map.addLayer(marker);
     marker.bindPopup(template).openPopup();
-    console.log(e.latlng.lat);
-    console.log(e.latlng.lng);
-    console.log(template.popupInput);
+    let submit = L.DomUtil.get('button-submit');
+    L.DomEvent.addListener(submit, 'click');
   };
 
