@@ -9,7 +9,10 @@ const bodyParser = require("body-parser");
 const sass       = require("node-sass-middleware");
 const app        = express();
 const morgan     = require('morgan');
-const session = require('express-session');
+const cookieParser = require('cookie-parser');
+const cookieSession = require('cookie-session');
+const saltRounds = 10;
+// const session = require('express-session');
 const flash = require('express-flash');
 
 // PG database client/connection setup
@@ -25,6 +28,15 @@ app.use(morgan('dev'));
 
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(cookieParser());
+app.use(cookieSession({
+  name: 'session',
+  keys: ['topsecret'],
+  maxAge: 24 * 60 * 60 * 1000
+}));
+
+app.use(flash());
+
 app.use("/styles", sass({
   src: __dirname + "/styles",
   dest: __dirname + "/public/styles",
@@ -51,13 +63,13 @@ const logoutRoutes = require("./routes/logout");
 // Note: Feel free to replace the example routes below with your own
 app.use("/api/users", usersRoutes(db));
 app.use("/api/widgets", widgetsRoutes(db));
-app.use(session({
-  secret: 'secret',
-  resave: false,
-  saveUninitialized: false
-}));
+// app.use(session({
+//   secret: 'secret',
+//   resave: false,
+//   saveUninitialized: false
+// }));
 
-app.use(flash());
+// app.use(flash());
 
 
 //2. APP.USE FOR OUR FUNCTIONS

@@ -18,17 +18,8 @@
   </head>
 
   <body>
-    <nav>
-      <span class="top-nav-bar">
-        <span id=brand>WikiMaps</span>
-        <div class="right">
-          <a>Login</a>
-          <a>Register</a>
-          <a>My Maps</a>
-          <a>+</a>
-        </div>
-      </span>
-    </nav>
+    <%- include('partials/_header') %>
+
     <body>
       <h1>Register</h1>
 
@@ -36,6 +27,7 @@
         <% if (typeof errors != 'undefined') { %> <% errors.forEach(error => { %>
           <li><%= error.message %></li>
           <% }) %> <% } %>
+
       </ul>
       <form action="/register" method="POST">
         <div>
