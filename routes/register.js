@@ -6,7 +6,8 @@ const bcrypt = require('bcrypt')
 const app = express();
 
 router.get("/register", (req, res) => {
-  res.render("register");
+  const templateVars = { user_id: req.session['user_id'], email: req.session['email']}
+  res.render("register", templateVars);
 });
 
 router.post("/register", async (req, res) => {
