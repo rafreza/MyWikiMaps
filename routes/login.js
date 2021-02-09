@@ -35,7 +35,7 @@ router.post("/login", (req, res) => {
             /// Adding into session object ---user_id = key --> and results.rows[0].id = value
           req.session['user_id'] = results.rows[0].id;
           req.session['email'] = results.rows[0].email;
-          res.redirect("/maps");
+          res.redirect("/");
 
         } else {
           //if password not correct
