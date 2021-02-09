@@ -9,7 +9,7 @@ const addMarker = (location, map) => {
     draggable: true
   });
   let popup = new google.maps.InfoWindow({
-    content: `<form id="marker-form" action="/" method = "POST">
+    content: `<form id="marker-form" action="/maps" method = "POST">
           <p>Create New Marker</p>
           <div>
             <input name="title" placeholder="Title" />
@@ -28,7 +28,7 @@ const addMarker = (location, map) => {
           <input type="hidden" name="lat" value="${marker.position.lat()}" />
           <input type="hidden" name="lng" value="${marker.position.lng()}" />
           <div>
-            <button type="submit"><a href="/">Create<a></button>
+            <button type="submit"><a href="/maps">Create<a></button>
             <a id="login-form__cancel" href="/">Cancel</a>
           </div>
         </form>
@@ -37,11 +37,21 @@ const addMarker = (location, map) => {
   google.maps.event.addListener(marker, 'click', function() {
     popup.open(map, this);
   });
-
-
 };
 
+$(document).on("submit", "#marker-form", function(evt) {
+  evt.preventDefault();
+  let markerData = {
+  };
 
+  $.ajax({
+    url: "/api/points",
+    method: "POST",
+    data: markerData
+  }).then(data => {
+    res.send(data);
+  });
+});
 
 
 
