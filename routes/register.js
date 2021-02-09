@@ -3,6 +3,10 @@ const router  = express.Router();
 const { pool } = require('../dbConfig')
 const bcrypt = require('bcrypt')
 
+const app = express();
+
+
+
 
 router.get("/register", (req, res) => {
   // res.send("REGISTER ROUTE");
@@ -29,11 +33,12 @@ router.post("/register", async (req, res) => {
   if(errors.length > 0) {
     res.render("register", { errors });
   } else {
+
     //form validation passed
 
     let hashedPassword = await bcrypt.hash(password, 10);
     console.log(hashedPassword);
-  }
+
 
   pool.query(
     `SELECT * FROM users
@@ -41,10 +46,31 @@ router.post("/register", async (req, res) => {
       if (err) {
         throw err
       }
-      console.log(results.rows)
+      console.log(results.rows);
+
+      if(results.rows.length > 0 ) {
+        errors.push({ message: "User already exists"});
+        res.render("register", { errors });
+      } else {
+        //no user in db--> registration process continued
+        pool.query(`
+        INSERT INTO users (name, email, password)
+        VALUES ($1, $2, $3)
+        RETURNING id, password`, [name, email, hashedPassword], (err, results) => {
+          if(err) {
+            throw err
+          }
+          console.log(results.rows)
+          req.flash('success_msg', "Congradulations! You are now registered.")
+          res.redirect('/login');
+        })
+
+
+
+      }
     }
   )
-
+  }
 
 
 
