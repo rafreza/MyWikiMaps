@@ -35,4 +35,3 @@ const map = L.map('map',{
     console.log(template.popupInput);
   };
 
-
