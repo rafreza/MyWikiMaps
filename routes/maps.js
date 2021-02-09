@@ -1,6 +1,7 @@
 const express = require('express');
 const router  = express.Router();
 const { pool } = require('../dbConfig');
+const app = express();
 
 
 router.get("/maps", (req, res) => {
@@ -9,6 +10,28 @@ router.get("/maps", (req, res) => {
   res.render('create', templateVars);
   });
 
+
+  router.post("/maps", (req, res) => {
+
+
+    let { title, description, image_url } = req.body;
+    console.log({ title,
+     description,
+     image_url })
+
+           const queryAddNewMap = `
+           INSERT INTO maps (title, description, image_url)
+           VALUES ($1, $2, $3)
+           RETURNING id;`
+
+           pool.query(queryAddNewMap, [title, description, image_url])
+           .then( results => {
+             console.log(results.rows)
+             res.redirect('/login');
+
+      })
+       .catch( err => { console.log('query error:', err)});
+   });
 
 
 
