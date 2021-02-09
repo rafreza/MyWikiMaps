@@ -1,20 +1,25 @@
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Rancho&display=swap" rel="stylesheet">
+<link href="https://fonts.google.com/specimen/Gudea?preview.text_type=custom" rel="stylesheet">
+
+
 <header>
   <nav>
     <span class="top-nav-bar">
       <a href="http://localhost:8080/" id=brand>WikiMaps</a>
-      <div class="right">
-      </div>
       <% if(user_id){ %>
-        <a href="http://localhost:8080/maps">Create a Map</a>
-        <a href="http://localhost:8080/profile">My Maps</a>
+        <span class="loggedInOptions">
+        <a class="button" href="http://localhost:8080/maps">Create a Map</a>
+        <a class="button" href="http://localhost:8080/profile">My Maps</a>
         <form action="/logout" method="POST">
           <!-- <label>Logged in as: <%= user_id.email %></label> -->
           <button type="submit">Logout</button>
           <label>Logged in as: <%= email %></label>
           </form>
       <% } else{ %>
-        <a href= "http://localhost:8080/login">Login</a>
-        <a href="http://localhost:8080/register">Register</a>
+        <span class="authentication">
+        <a class="button" href="http://localhost:8080/login">Login</a>
+        <a class="button" href="http://localhost:8080/register">Register</a>
       <% } %>
     </nav>
 </header>

@@ -24,10 +24,25 @@ nav #brand {
   text-decoration: none;
 }
 
-.right {
-  flex-direction: row;
-  justify-content: space-evenly;
-  margin: 20px;
-  padding: 1.5em;
-  float: right;
+.button {
+  font-family: 'Rancho', cursive;
+  font-size: 1.5em;
+  color: #ffffff;
+  display: flex;
+  text-decoration: none;
 }
+
+.authentication {
+  width: 25%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.loggedInOptions {
+  width: 45%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
