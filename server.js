@@ -53,10 +53,12 @@ const widgetsRoutes = require("./routes/widgets");
 
 // 1. REQUIRING OUR FUNCTIONS
 const mapsRoutes = require("./routes/maps");
+const mapIdRoutes = require("./routes/mapId");
 const registerRoutes = require("./routes/register");
 const loginRoutes = require("./routes/login");
 const profileRoutes = require("./routes/profile");
 const logoutRoutes = require("./routes/logout");
+
 
 
 // Mount all resource routes
@@ -71,7 +73,7 @@ app.use(registerRoutes);
 app.use(loginRoutes);
 app.use(profileRoutes);
 app.use(logoutRoutes);
-
+app.use(mapIdRoutes);
 // Note: mount other resources here, using the same pattern above
 
 

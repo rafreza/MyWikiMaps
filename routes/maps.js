@@ -19,19 +19,19 @@ router.get("/maps", (req, res) => {
      description,
      image_url })
 
-           const queryAddNewMap = `
-           INSERT INTO maps (title, description, image_url)
-           VALUES ($1, $2, $3)
-           RETURNING id;`
+    const queryAddNewMap = `
+    INSERT INTO maps (title, description, image_url)
+    VALUES ($1, $2, $3)
+    RETURNING id;`
 
-           pool.query(queryAddNewMap, [title, description, image_url])
-           .then( results => {
-             console.log(results.rows)
-             res.redirect('/login');
+    pool.query(queryAddNewMap, [title, description, image_url])
+    .then( results => {
+    const mapId = results.rows[0].id
+    res.redirect(`/maps/${mapId}`);
 
-      })
+    })
        .catch( err => { console.log('query error:', err)});
-   });
+  });
 
 
 
