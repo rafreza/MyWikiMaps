@@ -8,5 +8,15 @@
         <a href="http://localhost:8080/maps">Create a Map</a>
         <a href="http://localhost:8080/profile">My Maps</a>
       </div>
+      <% if(user_id){ %>
+        <form action="/logout" method="POST">
+          <!-- <label>Logged in as: <%= user_id.email %></label> -->
+          <button type="submit">Logout</button>
+          <label>Logged in as: <%= email %></label>
+          </form>
+      <% } else{ %>
+        <a class="nav-item nav-link" href="/login">Login</a>
+        <a class="nav-item nav-link" href="/register">Register</a>
+      <% } %>
     </nav>
 </header>
