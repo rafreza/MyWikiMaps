@@ -21,11 +21,11 @@ router.post("/register", async (req, res) => {
   let errors = [];
 
   if(!name || !email || !password) {
-    errors.push({ message: "Please enter all fields!" })
+    errors.push({ message: "Please enter all fields." })
   };
 
   if(password.length < 6) {
-    errors.push({ message: "Password should be at least 6 characters!"})
+    errors.push({ message: "Password should be at least 6 characters."})
   }
 
   if(errors.length > 0) {
@@ -45,7 +45,7 @@ router.post("/register", async (req, res) => {
    pool.query(queryString, [email]).then(results => {
 
     if(results.rows.length > 0 ) {
-      errors.push({ message: "User already exists"});
+      errors.push({ message: "User already exists, please log-in."});
       res.render("register", { errors });
       } else {
 
