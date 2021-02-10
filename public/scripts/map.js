@@ -1,6 +1,15 @@
+const express    = require("express");
+
+const cookieParser = require('cookie-parser');
+const cookieSession = require('cookie-session');
+
+const mapId = req.session['map_id'];
+
 window.initMap = mapid => {
   mapMaker("map");
 };
+
+
 
 const addMarker = (location, map) => {
   let marker = new google.maps.Marker({
@@ -9,7 +18,7 @@ const addMarker = (location, map) => {
     draggable: true
   });
   let popup = new google.maps.InfoWindow({
-    content: `<form id="marker-form" action="/maps" method = "POST">
+    content: `<form id="marker-form" action="/maps/${mapId}" method = "POST">
           <p>Create New Marker</p>
           <div>
             <input name="title" placeholder="Title" />
@@ -24,7 +33,7 @@ const addMarker = (location, map) => {
             <input type="text" name="image_url" placeholder="Image Url" />
           </div>
           <input type="hidden" name="user_id" value="1" />
-          <input type="hidden" name="mapid" value="${1}" />
+          <input type="hidden" name="mapid" value="${mapId}" />
           <input type="hidden" name="lat" value="${marker.position.lat()}" />
           <input type="hidden" name="lng" value="${marker.position.lng()}" />
           <div>
@@ -39,27 +48,20 @@ const addMarker = (location, map) => {
   });
 };
 
-$(document).on("submit", "#marker-form", function(evt) {
-  evt.preventDefault();
-  let markerData = {
-    title: $(this.title).val(),
-    description: $(this.description).val(),
-    address: $(this.address).val(),
-    image_url: $(this.image_url).val(),
-    user_id: $(this.user_id).val(),
-    map_id: $(this.mapid).val(),
-    latitude: $(this.lat).val(),
-    longitude: $(this.lng).val()
-  };
-
+$('#marker-form').submit(function(e) {
+  e.preventDefault();
   $.ajax({
-    url: "/maps/:mapid",
-    method: "POST",
-    data: markerData
-  }).then(data => {
-    res.send(data);
-  });
+    url: `maps/${mapId}`,
+    type: 'POST',
+    data: data,
+    success: function(){
+      console.log('success!');
+    }
+  })
+
 });
+
+
 
 
 
