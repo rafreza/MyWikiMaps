@@ -21,14 +21,17 @@ router.get("/maps", (req, res) => {
     const queryAddNewMap = `
     INSERT INTO maps (title, description, image_url)
     VALUES ($1, $2, $3)
-    RETURNING id;`
+    RETURNING id, title;`
 
     pool.query(queryAddNewMap, [title, description, image_url])
     .then( results => {
 
     //to fecth map Id
     const mapId = results.rows[0].id
+    const mapTitle = results.rows[0].title
+
     req.session['map_id'] = mapId;
+    req.session['map_title'] = mapTitle;
 
     res.redirect(`/maps/${mapId}`);
 
