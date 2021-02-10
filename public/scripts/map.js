@@ -12,6 +12,10 @@ $(document).ready(() => {
       e.preventDefault();
       console.log(e);
       const data = {
+        title: e.target.title.value,
+        description: e.target.description.value,
+        address: e.target.address.value,
+        image_url: e.target.image_url.value,
         user_id: e.target.user_id.value,
         map_id: e.target.mapid.value,
         lat: e.target.lat.value,
@@ -25,10 +29,9 @@ $(document).ready(() => {
       })
       .done(function(res){
 
-        console.log('test!', res);
+        console.log(data, res);
 
       });
-      debugger;
     }));
 
     google.maps.event.addListener(map, "click", (e) => {
