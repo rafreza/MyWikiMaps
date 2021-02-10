@@ -13,8 +13,26 @@ router.get("/maps/:mapId", (req, res) => {
 
 router.post("/maps/:mapId", (req, res) => {
 
-  res.status(200).send();
+  let { title, description, address, image_url, map_id, lat, lng } = req.body;
 
+  const queryAddNewPoints = `
+  INSERT INTO points (map_id, title, description, image_url, address, latitude, longitude)
+  VALUES ($1, $2, $3, $4, $5, $6, $7)
+  RETURNING id, title;`
+
+  pool.query(queryAddNewPoints, [ Number(map_id), title, description, image_url, address, Number(lat), Number(lng)])
+  .then( results => {
+
+    const pointerId = results.rows[0].id
+    const pointerTitle = results.rows[0].title
+
+    req.session['pointer_id'] = pointerId;
+    req.session['pointer_title'] = pointerTitle;
+
+  // res.redirect(`/maps/${mapId}`);
+
+  })
+     .catch( err => { console.log('query error:', err)});
   });
 
 
