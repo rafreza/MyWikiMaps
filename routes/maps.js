@@ -11,7 +11,7 @@ router.get("/maps", (req, res) => {
 });
 
   router.post("/maps", (req, res) => {
-
+    console.log('***HITTING MAPS.JS');
 
     let { title, description, image_url } = req.body;
     console.log({ title,
