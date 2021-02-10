@@ -39,9 +39,7 @@ $(document).ready(() => {
 
   };
   window.initMap();
-  const deleteMarker = function(markerId) {
 
-  }
   let mapId = window.location.pathname.substring(window.location.pathname.lastIndexOf('/'));
   const newMapId = mapId.slice(1);
   console.log("mapId:", newMapId);
@@ -102,7 +100,7 @@ $(document).ready(() => {
 
         });
 
-        return false;
+
       });
     });
     google.maps.event.addListener(marker, 'submit', evt => {
