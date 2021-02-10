@@ -1,19 +1,19 @@
 
-<form action="/maps" method = "POST" style="margin-top: 10em;" id="map-form" >
-  <p>Create New Map</p>
+<form action="/maps" method = "POST" style="margin-top: 10em;" id="form" >
+  <h1>Create New Map</h1>
   <div>
-    <input name='title' placeholder="Title">
+    <input class="input-field" name='title' placeholder="Title">
   </div>
 
   <div>
-      <input type ="text" name="description" placeholder="Description">
+      <input class="input-field" type ="text" name="description" placeholder="Description">
     </div>
 
     <div>
-      <input type ="text" name="image_url" placeholder="Image Url">
+      <input class="input-field" type ="text" name="image_url" placeholder="Image Url">
     </div>
   <div>
-      <button type ='submit' href="/profile">Create</button>
-      <a id="login-form__cancel" href="/maps">Cancel</a>
+      <button class="input-field, button-to-authenticate" type ='submit' href="/profile">Create</button>
+      <a class="input-field" id="login-form__cancel" href="/maps">Cancel</a>
   </div>
 </form>
