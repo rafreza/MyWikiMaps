@@ -10,9 +10,6 @@ router.get("/maps", (req, res) => {
   res.render('create', templateVars);
 });
 
-
-
-
   router.post("/maps", (req, res) => {
 
 
@@ -28,7 +25,11 @@ router.get("/maps", (req, res) => {
 
     pool.query(queryAddNewMap, [title, description, image_url])
     .then( results => {
+
+    //to fecth map Id
     const mapId = results.rows[0].id
+    req.session['map_id'] = mapId;
+
     res.redirect(`/maps/${mapId}`);
 
     })
