@@ -7,11 +7,12 @@ nav {
   height: 120px;
   width: 100%;
   z-index: 100;
-  background-color: #126b12;
+  background-color: #4CAF50;
   color: #ffffff;
 }
 
 .top-nav-bar{
+  width: 100%;
   display: flex;
   justify-content: space-between;
 }
@@ -19,11 +20,29 @@ nav #brand {
   font-family: 'Rancho', cursive;
   font-size: 2em;
   padding: 1.1em;
+  color:#ffffff;
+  text-decoration: none;
 }
 
-.right {
-  flex-direction: row;
-  justify-content: space-evenly;
-  margin: 20px;
-  padding: 1.5em;
+.button {
+  font-family: 'Rancho', cursive;
+  font-size: 1.5em;
+  color: #ffffff;
+  display: flex;
+  text-decoration: none;
 }
+
+.authentication {
+  width: 25%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.loggedInOptions {
+  width: 45%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+

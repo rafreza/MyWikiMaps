@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Home Page</title>
+
+    <!-- Google Fonts-->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Rancho&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Gudea&display=swap" rel="stylesheet">
+
+
+    <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
+    <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
+    <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
+    <link rel="stylesheet" href="/styles/nav.css" type="text/css" />
+    <link rel="stylesheet" href="/styles/profile.css" type="text/css" />
+
+    <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
+  </head>
+
+  <body>
+    <header>
+      <nav>
+        <span class="top-nav-bar">
+          <a href="http://localhost:8080/" id=brand>WikiMaps</a>
+          <span class="authentication">
+            <a class="button" href="http://localhost:8080/login">Login</a>
+            <a class="button" href="http://localhost:8080/register">Register</a>
+          </nav>
+        </header>
+  </body>
+    <body>
+      <span id="form">
+      <h1 id= "form" class="register">Register</h1>
+        <% if (typeof errors != 'undefined') { %> <% errors.forEach(error => { %>
+          <li class="error-message"><%= error.message %></li>
+          <% }) %> <% } %>
+      <form action="/register" method="POST">
+        <div>
+          <input class="input-field" type="name" name="name" placeholder="Enter name" required>
+        </div>
+        <div>
+          <input class="input-field" type="email" name="email" placeholder="Enter email" required>
+        </div>
+          <input class="input-field" type="password" name="password" placeholder="Password" required>
+          <div>
+            <button class="input-field, button-to-authenticate" type="submit">Register</button>
+          </div>
+        </span>
+        <div>
+          <a class="input-field" href="/login">Already Registered?</a>
+        </div>
+
+    </form>
+  </body>
+</html>

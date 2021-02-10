@@ -8,6 +8,6 @@ CREATE TABLE points (
   description TEXT,
   image_url VARCHAR(255) NOT NULL,
   address VARCHAR(255) NOT NULL,
-  longitutde DECIMAL(9,6) NOT NULL,
+  longitude DECIMAL(9,6) NOT NULL,
   latitude DECIMAL(8,6) NOT NULL
 );

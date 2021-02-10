@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Home Page</title>
+
+    <!-- Google Fonts-->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Rancho&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Gudea&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
+    <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
+    <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
+    <link rel="stylesheet" href="/styles/nav.css" type="text/css" />
+    <link rel="stylesheet" href="/styles/profile.css" type="text/css" />
+
+    <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
+  </head>
+
+  <body>
+    <%- include('partials/_header') %>
+
+    <body>
+      <span id="form">
+      <h1 id="form" class="login"><% 'map_title' %></h1>
+
+
+    <div id="map"></div>
+
+    <script src="/scripts/map.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAcgyKfKOGItTDzqDIuXCxXiaAZRLK-TjA&callback=initMap"
+    async defer></script>
+      <label>YOUR MAP ID is: <%= `${map_id}` %></label>
+      <label>YOUR MAP ID is: <%= `${map_title}` %></label>
+
+    </body>
+    </html>
+  </body>
+</html>
