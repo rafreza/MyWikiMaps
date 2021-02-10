@@ -16,7 +16,6 @@ $(document).ready(() => {
         description: e.target.description.value,
         address: e.target.address.value,
         image_url: e.target.image_url.value,
-        user_id: e.target.user_id.value,
         map_id: e.target.mapid.value,
         lat: e.target.lat.value,
         lng: e.target.lng.value
@@ -47,6 +46,7 @@ $(document).ready(() => {
   const newMapId = mapId.slice(1);
   console.log("mapId:", newMapId);
 
+
   const addMarker = (location, map) => {
 
     let marker = new google.maps.Marker({
@@ -71,7 +71,6 @@ $(document).ready(() => {
             <div>
               <input type="text" name="image_url" placeholder="Image Url" />
             </div>
-            <input type="hidden" name="user_id" value="1" />
             <input type="hidden" name="mapid" value="${newMapId}" />
             <input type="hidden" name="lat" value="${marker.position.lat()}" />
             <input type="hidden" name="lng" value="${marker.position.lng()}" />
