@@ -41,7 +41,7 @@ $(document).ready(() => {
 
   }
   let mapId = window.location.pathname.substring(window.location.pathname.lastIndexOf('/'));
-  let newMapId = mapId.slice(1);
+  const newMapId = mapId.slice(1);
   console.log("mapId:", newMapId);
 
   const addMarker = (location, map) => {

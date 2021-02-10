@@ -12,7 +12,7 @@ router.get("/maps/:mapId", (req, res) => {
   });
 
 router.post("/maps/:mapId", (req, res) => {
-  console.log(req.body);
+
   res.status(200).send();
 
   });
