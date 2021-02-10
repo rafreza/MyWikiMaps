@@ -28,8 +28,8 @@ const addMarker = (location, map) => {
           <input type="hidden" name="lat" value="${marker.position.lat()}" />
           <input type="hidden" name="lng" value="${marker.position.lng()}" />
           <div>
-            <button type="submit"><a href="/maps">Create<a></button>
-            <a id="login-form__cancel" href="/">Cancel</a>
+            <button type="submit"><a href="/maps/">Create<a></button>
+            <a id="login-form__cancel" href="/maps/">Cancel</a>
           </div>
         </form>
           `
@@ -42,10 +42,18 @@ const addMarker = (location, map) => {
 $(document).on("submit", "#marker-form", function(evt) {
   evt.preventDefault();
   let markerData = {
+    title: $(this.title).val(),
+    description: $(this.description).val(),
+    address: $(this.address).val(),
+    image_url: $(this.image_url).val(),
+    user_id: $(this.user_id).val(),
+    map_id: $(this.mapid).val(),
+    latitude: $(this.lat).val(),
+    longitude: $(this.lng).val()
   };
 
   $.ajax({
-    url: "/api/points",
+    url: "/maps/:mapid",
     method: "POST",
     data: markerData
   }).then(data => {
