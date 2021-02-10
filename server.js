@@ -68,12 +68,14 @@ app.use("/api/widgets", widgetsRoutes(db));
 
 
 //2. APP.USE FOR OUR FUNCTIONS
+app.use(mapIdRoutes);
 app.use(mapsRoutes);
 app.use(registerRoutes);
 app.use(loginRoutes);
 app.use(profileRoutes);
 app.use(logoutRoutes);
-app.use(mapIdRoutes);
+
+
 // Note: mount other resources here, using the same pattern above
 
 
