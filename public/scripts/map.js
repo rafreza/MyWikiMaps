@@ -1,13 +1,16 @@
-
 $(document).ready(() => {
   window.initMap = (markers) => {
+    let centerMap;
+    if (markers.length > 0) {
+      centerMap = { lat: parseFloat(markers[0].latitude), lng:parseFloat(markers[0].longitude)};
+    } else {
+      centerMap = { lat: 43.6532, lng: -79.3832 }
+    }
 
-    const tdot = { lat: 43.6532, lng: -79.3832};
     let map = new google.maps.Map(document.getElementById("map"), {
       zoom: 13,
-      center: tdot
+      center: centerMap
     });
-    console.log(markers);
     for (let marker of markers) {
       console.log(marker);
       if (marker){
@@ -20,7 +23,7 @@ $(document).ready(() => {
 
 
     }
-    $(document).on("submit", (function(e) {
+    $(document).on("submit", "#marker-form", (function(e) {
       e.preventDefault();
       console.log(e);
       const data = {
@@ -40,34 +43,34 @@ $(document).ready(() => {
       })
       .done(function(res){
 
-        console.log(data, res);
-
       });
     }));
 
 
 
     google.maps.event.addListener(map, "click", (e) => {
-      addMarker(e.latLng, map);
+      for (let marker of markers) {
+        if (e.latLng.lng() !== parseFloat(marker.latitude)){
+          addMarker(e.latLng, map);
+          break;
+        };
+      }
+
     });
 
   };
-  //window.initMap();
+
 
   let mapId = window.location.pathname.substring(window.location.pathname.lastIndexOf('/'));
   const newMapId = mapId.slice(1);
-  console.log("mapId:", newMapId);
 
 
   const addMarker = (location, map) => {
-    console.log(location);
     let marker = new google.maps.Marker({
       position: location,
       map: map,
       draggable: true
     });
-
-
     let popup = new google.maps.InfoWindow({
       content: `<form id="marker-form" action=`+`/maps/${newMapId}`+` method = "POST">
             <p>Create New Marker</p>
@@ -88,45 +91,14 @@ $(document).ready(() => {
             <input type="hidden" name="lng" value="${marker.position.lng()}" />
             <div>
               <button>Create</button>
-              <a id="login-form__cancel">Cancel</a>
             </div>
           </form>
-          <script>console.log('hello!');</script>
             `
     });
     google.maps.event.addListener(marker, 'click', function() {
-
-      popup.open(map, this);
-
-      $('#marker-form').submit(function(e) {
-        e.preventDefault();
-        debugger;
-        console.log("mapId:", newMapId);
-
-        $.ajax({
-          url: `/maps${newMapId}`,
-          type: 'POST',
-          data: data,
-        })
-        .done(function(res){
-
-          console.log('test!', res);
-
-        });
-
-
-      });
-    });
-    google.maps.event.addListener(marker, 'submit', evt => {
-      evt.preventDefault();
+        popup.open(map, this);
     });
   };
 
 
 });
-
-
-
-
-
-
