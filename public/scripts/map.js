@@ -1,11 +1,10 @@
-
 $(document).ready(() => {
   window.initMap = (markers) => {
 
-    const tdot = { lat: 43.6532, lng: -79.3832};
+    const centerOnMarker = { lat: parseFloat(markers[0].latitude), lng:parseFloat(markers[0].longitude)};
     let map = new google.maps.Map(document.getElementById("map"), {
       zoom: 13,
-      center: tdot
+      center: centerOnMarker
     });
     console.log(markers);
     for (let marker of markers) {
@@ -124,9 +123,3 @@ $(document).ready(() => {
 
 
 });
-
-
-
-
-
-
