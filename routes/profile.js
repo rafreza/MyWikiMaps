@@ -4,6 +4,8 @@ const router  = express.Router();
 
 
 router.get("/profile/:userId", (req, res) => {
+
+  // TO DISPLAY PROFILES CREATE BY THE USER
   let map_id = req.session.map_id;
   let user_id= req.session.user_id;
 
@@ -11,39 +13,37 @@ router.get("/profile/:userId", (req, res) => {
 
   console.log("THIS IS THE USER ID YOURE LOOKING FOR GALIT: ", user_id)
   const queryDisplayCreatedMaps = `
-  SELECT title
+  SELECT id, title
   FROM MAPS
   WHERE user_id =$1;
   `
-
-  pool.query(queryDisplayCreatedMaps, [user_id])
+  return pool.query(queryDisplayCreatedMaps, [user_id])
   .then( results => {
+    //DONT NEED FOR NOW BUT MIGHT NEED LATER, simply an aray with the map titles asspciated with the userID
+    //userMaps = userMapsQueryResults.map((row) => row.title);
 
-  //to fecth map Id
+    //VARIABLE THAT HOLDS THE ARRAY WITH OBJECTS NEEDED
+    userMapsQueryResults = results.rows
+// [ anonymous { id: 1, title: 'Best Little Italy Spots' },
+//   anonymous { id: 2, title: 'Best Poutines in Montreal' },
+//   anonymous { id: 26, title: 'TEST 4' },
+//   anonymous { id: 31, title: 'TEST 2' },
+//   anonymous { id: 32, title: 'TEST 4' },
+//   anonymous { id: 33, title: 'TEST 15' },
+//   anonymous { id: 34, title: 'test 100' },
+//   anonymous { id: 35, title: 'test 1000' },
+//   anonymous { id: 36, title: 'this is the fun map' },
+//   anonymous { id: 37, title: 'My new map' } ]
 
-  const mapTitles = results.rows[0].title
-
-  for (let mapId of mapTitles) {
-    userMaps.push(res.rows[mapId].title);
-  }
-
-  // const mapTitle = results.rows[0].title
-  // console.log("THIS IS THE MAP TITLE: ", mapTitle)
-
-  // userMaps.push(mapTitle);
-
-  console.log("THIS IS THE MAP ARRAY GALIT: ", userMaps )
-  // req.session['map_id'] = mapId;
-  // req.session['map_title'] = mapTitle;
-
-  // res.redirect(`/maps/${mapId}`);
+  const templateVars = { user_id: req.session['user_id'], email: req.session['email'], map_title: userMapsQueryResults };
+  res.render('profile', templateVars);;
 
   })
      .catch( err => { console.log('query error:', err)});
 
-  const templateVars = { user_id: req.session['user_id'], email: req.session['email']};
-  res.render('profile', templateVars);
-
 });
 
 module.exports = router;
+
+
+
