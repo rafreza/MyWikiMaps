@@ -23,7 +23,7 @@ $(document).ready(() => {
 
 
     }
-    $(document).on("submit", (function(e) {
+    $(document).on("submit", "#marker-form", (function(e) {
       e.preventDefault();
       console.log(e);
       const data = {
@@ -42,8 +42,6 @@ $(document).ready(() => {
         data: data,
       })
       .done(function(res){
-
-        console.log(data, res);
 
       });
     }));
@@ -93,14 +91,13 @@ $(document).ready(() => {
             <input type="hidden" name="lng" value="${marker.position.lng()}" />
             <div>
               <button>Create</button>
-              <a id="login-form__cancel">Cancel</a>
             </div>
           </form>
             `
     });
     google.maps.event.addListener(marker, 'click', function() {
-      popup.open(map, this);
-      });
+        popup.open(map, this);
+    });
   };
 
 
