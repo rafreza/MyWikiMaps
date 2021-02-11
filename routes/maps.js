@@ -6,24 +6,23 @@ const app = express();
 
 router.get("/maps", (req, res) => {
 
+
+
   const templateVars = { user_id: req.session['user_id'], email: req.session['email']};
   res.render('create', templateVars);
 });
 
   router.post("/maps", (req, res) => {
-    console.log('***HITTING MAPS.JS');
 
+    let user_id = req.session.user_id;
     let { title, description, image_url } = req.body;
-    console.log({ title,
-     description,
-     image_url })
 
     const queryAddNewMap = `
-    INSERT INTO maps (title, description, image_url)
-    VALUES ($1, $2, $3)
+    INSERT INTO maps (user_id, title, description, image_url)
+    VALUES ($1, $2, $3, $4)
     RETURNING id, title;`
 
-    pool.query(queryAddNewMap, [title, description, image_url])
+    pool.query(queryAddNewMap, [user_id, title, description, image_url])
     .then( results => {
 
     //to fecth map Id

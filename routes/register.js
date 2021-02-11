@@ -58,7 +58,7 @@ router.post("/register", async (req, res) => {
 
         pool.query(queryAddNewUser, [name, email, hashedPassword])
         .then( results => {
-          console.log(results.rows)
+          // console.log(results.rows)
           req.flash('success_msg', "Congradulations, you are now registered. Please log-in")
           res.redirect('/login');
 

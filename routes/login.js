@@ -12,7 +12,7 @@ router.get("/login", (req, res) => {
 router.post("/login", (req, res) => {
 
   let { email, password } = req.body;
-  console.log({email, password})
+  // console.log({email, password})
 
   // ACCESSING DB TO VERIFY THAT EMAIL EXISTS =>
 
