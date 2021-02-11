@@ -92,7 +92,12 @@ body {
   display: table-caption;
 
 }
+.icons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
 
+}
 #allMaps {
   display: flex;
   flex-direction: column;
