@@ -52,6 +52,7 @@ const widgetsRoutes = require("./routes/widgets");
 
 
 // 1. REQUIRING OUR FUNCTIONS
+const homeRoutes = require("./routes/index");
 const mapsRoutes = require("./routes/maps");
 const mapIdRoutes = require("./routes/mapId");
 const registerRoutes = require("./routes/register");
@@ -68,6 +69,7 @@ app.use("/api/widgets", widgetsRoutes(db));
 
 
 //2. APP.USE FOR OUR FUNCTIONS
+app.use(homeRoutes);
 app.use(mapIdRoutes);
 app.use(mapsRoutes);
 app.use(registerRoutes);
@@ -82,10 +84,7 @@ app.use(logoutRoutes);
 // Home page
 // Warning: avoid creating more routes in this file!
 // Separate them into separate routes files (see above).
-app.get("/", (req, res) => {
-  const templateVars = { user_id: req.session['user_id'], email: req.session['email']}
-  res.render("index", templateVars);
-});
+
 
 
 app.listen(PORT, () => {
