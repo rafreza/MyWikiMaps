@@ -10,6 +10,8 @@
     <!-- Google Fonts-->
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Rancho&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo&display=swap" rel="stylesheet">
 
 
 
@@ -21,25 +23,32 @@
     <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
     <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
     <link rel="stylesheet" href="/styles/profile.css" type="text/css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w==" crossorigin="anonymous" />
 
 </head>
 <body>
   <%- include('partials/_header') %>
-  <div id=profile-info>
-  <h2><%= email %>'s Activity</h2>
-      <h3>Maps Created</h3>
-      <ul>
+  <div id=profile-info >
+  <table>
+  <!-- <h2><%= email %>'s Activity</h2> -->
+  <tr>
+    <h2 class="created-favorited">Maps Created</h2>
+  </tr>
+  <td>
       <% for (let map of map_title) { %>
-        <li><a href="http://localhost:8080/maps/<%= map.id %>"><%= map.title %></a></li>
+        <li class="rows"><i class="fas fa-map-marker-alt"></i><a href="http://localhost:8080/maps/<%= map.id %>"><%= map.title %></a></li>
         <% } %>
-      </ul>
-      <div class="created"></div>
-      <h2>Favourite Maps</h2>
-      <ul>
+      </td>
+    </table>
+      <table>
+      <tr><h2 class="created-favorited"> Favourite Maps</h2></tr>
+
+    <td>
         <% for (let favorites of favorited_maps) { %>
-          <li><a href="http://localhost:8080/maps/<%= favorites.id %>"><%= favorites.title %></a></li>
+          <li class="rows"><i class="fas fa-map-marker-alt"></i><a href="http://localhost:8080/maps/<%= favorites.id %>"><%= favorites.title %></a></li>
           <% } %>
-      </ul>
+      </td>
     </div>
+  </table>
 </body>
 </html>
