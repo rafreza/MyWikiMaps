@@ -14,15 +14,25 @@ $(document).ready(() => {
     for (let marker of markers) {
       console.log(marker);
       if (marker){
-        addMarker({
+        const m = addExistingMarker({
           lat: parseFloat(marker.latitude),
           lng: parseFloat(marker.longitude)
-
         }, map);
+
+        let info = new google.maps.InfoWindow({
+          content: `
+          <p><b>${marker.title}</b><p>
+          <p>Description: ${marker.description}<p>
+          <p>Address: ${marker.address}<p>
+          <p>image_url: ${marker.image_url}<p>
+          `,
+        });
+        google.maps.event.addListener(m,'click', function(e) {
+          info.open(map, this);
+        })
+      }
     }
 
-
-    }
     $(document).on("submit", "#marker-form", (function(e) {
       e.preventDefault();
       console.log(e);
@@ -41,9 +51,7 @@ $(document).ready(() => {
         type: 'POST',
         data: data,
       })
-      .done(function(res){
 
-      });
     }));
 
 
@@ -51,7 +59,7 @@ $(document).ready(() => {
     google.maps.event.addListener(map, "click", (e) => {
       for (let marker of markers) {
         if (e.latLng.lng() !== parseFloat(marker.latitude)){
-          addMarker(e.latLng, map);
+          addNewMarker(e.latLng, map);
           break;
         };
       }
@@ -64,39 +72,48 @@ $(document).ready(() => {
   let mapId = window.location.pathname.substring(window.location.pathname.lastIndexOf('/'));
   const newMapId = mapId.slice(1);
 
-
-  const addMarker = (location, map) => {
-    let marker = new google.maps.Marker({
+  const addExistingMarker = (location, map) => {
+    let existingMarker = new google.maps.Marker({
       position: location,
       map: map,
-      draggable: true
+      draggable: false
     });
-    let popup = new google.maps.InfoWindow({
-      content: `<form id="marker-form" action=`+`/maps/${newMapId}`+` method = "POST">
-            <p>Create New Marker</p>
-            <div>
-              <input name="title" placeholder="Title" />
-            </div>
-            <div>
-              <input type="text" name="description" placeholder="Description" />
-            </div>
-            <div>
-              <input type="text" name="address" placeholder="Address" />
-            </div>
-            <div>
-              <input type="text" name="image_url" placeholder="Image Url" />
-            </div>
+    return existingMarker;
+  }
+
+  const addNewMarker = (location, map) => {
+    let newMarker = new google.maps.Marker({
+      position: location,
+      map: map,
+      draggable: false
+    });
+    google.maps.event.addListener(newMarker, 'click', function() {
+      let popup = new google.maps.InfoWindow({
+        content:
+        `<form id="marker-form" action=`+`/maps/${newMapId}`+` method = "POST">
+          <p>Create New Marker</p>
+          <div>
+            <input name="title" placeholder="Title" />
+          </div>
+          <div>
+            <input type="text" name="description" placeholder="Description" />
+          </div>
+          <div>
+            <input type="text" name="address" placeholder="Address" />
+          </div>
+          <div>
+            <input type="text" name="image_url" placeholder="Image Url" />
+          </div>
             <input type="hidden" name="mapid" value="${newMapId}" />
-            <input type="hidden" name="lat" value="${marker.position.lat()}" />
-            <input type="hidden" name="lng" value="${marker.position.lng()}" />
-            <div>
-              <button>Create</button>
-            </div>
-          </form>
-            `
-    });
-    google.maps.event.addListener(marker, 'click', function() {
-        popup.open(map, this);
+            <input type="hidden" name="lat" value="${newMarker.position.lat()}" />
+            <input type="hidden" name="lng" value="${newMarker.position.lng()}" />
+          <div>
+            <button>Create</button>
+          </div>
+        </form>
+        `
+      });
+      popup.open(map, this);
     });
   };
 
