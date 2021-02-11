@@ -1,13 +1,22 @@
 
 $(document).ready(() => {
-  window.initMap = () => {
-    const markers = {};
-    let markerId;
+  window.initMap = (markers) => {
+
     const tdot = { lat: 43.6532, lng: -79.3832};
     let map = new google.maps.Map(document.getElementById("map"), {
       zoom: 13,
       center: tdot
     });
+    console.log(markers);
+    let firstMarker = markers[0];
+    console.log(firstMarker);
+    if (firstMarker){
+    addMarker({
+      lat: parseFloat(firstMarker.latitude),
+      lng: parseFloat(firstMarker.longitude)
+
+    }, map);
+    }
     $(document).on("submit", (function(e) {
       e.preventDefault();
       console.log(e);
@@ -33,12 +42,14 @@ $(document).ready(() => {
       });
     }));
 
+
+
     google.maps.event.addListener(map, "click", (e) => {
       addMarker(e.latLng, map);
     });
 
   };
-  window.initMap();
+  //window.initMap();
 
   let mapId = window.location.pathname.substring(window.location.pathname.lastIndexOf('/'));
   const newMapId = mapId.slice(1);
@@ -46,7 +57,7 @@ $(document).ready(() => {
 
 
   const addMarker = (location, map) => {
-
+    console.log(location);
     let marker = new google.maps.Marker({
       position: location,
       map: map,

@@ -5,10 +5,22 @@ const app = express();
 
 
 router.get("/maps/:mapId", (req, res) => {
-
   const templateVars = { user_id: req.session['user_id'], email: req.session['email'], map_id: req.session['map_id'], map_title: req.session['map_title'] };
-  console.log(templateVars);
-  res.render("mapId", templateVars);
+  const queryGetMarkerData =
+  `SELECT * FROM points
+  WHERE map_id = $1;
+  `
+  console.log("params: ", req.params);
+  pool.query(queryGetMarkerData, [Number(req.params["mapId"])])
+  .then( results => {
+
+    console.log(results.rows);
+    templateVars.markers = results.rows.map(x => ({longitude: x.longitude, latitude: x.latitude }));
+    console.log(templateVars);
+    res.render("mapId", templateVars);
+  });
+
+
   });
 
 router.post("/maps/:mapId", (req, res) => {
