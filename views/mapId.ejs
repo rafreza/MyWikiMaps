@@ -29,26 +29,12 @@
     <div id="map"></div>
 
 
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAcgyKfKOGItTDzqDIuXCxXiaAZRLK-TjA&"
-    async defer></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAcgyKfKOGItTDzqDIuXCxXiaAZRLK-TjA&"></script>
     <script src="/scripts/map.js"></script>
-    <script>
-      const localMarkers = [];
-      let title, description, image_url, address, longitude, latitude;
-    </script>
-    <% for (let marker of markers) { %>
-      <script>
-        title = '<%-marker.title%>';
-        description = '<%-marker.description%>';
-        image_url = '<%-marker.image_url%>';
-        address = '<%-marker.address%>';
-        longitude = '<%-marker.longitude%>';
-        latitude = '<%-marker.latitude%>';
-        localMarkers.push({title, description, image_url, address, longitude, latitude});
-      </script>
-      <% }%>
+
     <script>
       $(document).ready(() => {
+        let localMarkers = JSON.parse(<%-JSON.stringify(JSON.stringify(markers))%>);
         console.log(localMarkers);
         window.initMap(localMarkers);
       });

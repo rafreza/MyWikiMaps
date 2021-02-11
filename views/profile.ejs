@@ -25,8 +25,9 @@
 </head>
 <body>
   <%- include('partials/_header') %>
-  <h1><%= email %>'s Activity</h1>
-      <h2>Maps Created</h2>
+  <div id=profile-info>
+  <h2><%= email %>'s Activity</h2>
+      <h3>Maps Created</h3>
       <ul>
       <% for (let map of map_title) { %>
         <li><a href="http://localhost:8080/maps/<%= map.id %>"><%= map.title %></a></li>
@@ -39,6 +40,6 @@
           <li><a href="http://localhost:8080/maps/<%= favorites.id %>"><%= favorites.title %></a></li>
           <% } %>
       </ul>
-      <div class="favourited"></div>
+    </div>
 </body>
 </html>
