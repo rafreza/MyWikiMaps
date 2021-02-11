@@ -7,14 +7,12 @@ $(document).ready(() => {
       centerMap = { lat: 43.6532, lng: -79.3832 }
     }
 
-
     let map = new google.maps.Map(document.getElementById("map"), {
       zoom: 13,
       center: centerMap
     });
-    //console.log(markers);
     for (let marker of markers) {
-      //console.log(marker);
+      console.log(marker);
       if (marker){
         addMarker({
           lat: parseFloat(marker.latitude),
@@ -53,7 +51,13 @@ $(document).ready(() => {
 
 
     google.maps.event.addListener(map, "click", (e) => {
-      addMarker(e.latLng, map);
+      for (let marker of markers) {
+        if (e.latLng.lng() !== parseFloat(marker.latitude)){
+          addMarker(e.latLng, map);
+          break;
+        };
+      }
+
     });
 
   };
@@ -64,14 +68,11 @@ $(document).ready(() => {
 
 
   const addMarker = (location, map) => {
-    console.log(location);
     let marker = new google.maps.Marker({
       position: location,
       map: map,
       draggable: true
     });
-
-
     let popup = new google.maps.InfoWindow({
       content: `<form id="marker-form" action=`+`/maps/${newMapId}`+` method = "POST">
             <p>Create New Marker</p>
@@ -95,35 +96,11 @@ $(document).ready(() => {
               <a id="login-form__cancel">Cancel</a>
             </div>
           </form>
-          <script>console.log('hello!');</script>
             `
     });
     google.maps.event.addListener(marker, 'click', function() {
-
       popup.open(map, this);
-
-      $('#marker-form').submit(function(e) {
-        e.preventDefault();
-        debugger;
-        console.log("mapId:", newMapId);
-
-        $.ajax({
-          url: `/maps${newMapId}`,
-          type: 'POST',
-          data: data,
-        })
-        .done(function(res){
-
-          console.log('test!', res);
-
-        });
-
-
       });
-    });
-    google.maps.event.addListener(marker, 'submit', evt => {
-      evt.preventDefault();
-    });
   };
 
 
