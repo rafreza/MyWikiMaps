@@ -25,20 +25,21 @@
 </head>
 <body>
   <%- include('partials/_header') %>
-  <h1><%= email %>'s Activity</h1>
+  <div id=profile-info>
+  <h2><%= email %>'s Activity</h2>
       <h3>Maps Created</h3>
       <ul>
       <% for (let map of map_title) { %>
-        <li><a href="http://localhost:8080/maps/<%= map_id %>"><%= map.title %></a></li>
+        <li><a href="http://localhost:8080/maps/<%= map.id %>"><%= map.title %></a></li>
         <% } %>
       </ul>
       <div class="created"></div>
-      <h3>Favourite Maps</h3>
+      <h2>Favourite Maps</h2>
       <ul>
         <% for (let favorites of favorited_maps) { %>
-          <li><%= favorites.title %></li>
+          <li><a href="http://localhost:8080/maps/<%= favorites.id %>"><%= favorites.title %></a></li>
           <% } %>
       </ul>
-      <div class="favourited"></div>
+    </div>
 </body>
 </html>

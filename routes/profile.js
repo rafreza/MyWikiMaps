@@ -46,7 +46,7 @@ const queryDisplayFavoritedMaps = `
     userFavoritedQueryResults = results2.rows
 
 
-  const templateVars = { user_id: req.session['user_id'], email: req.session['email'], map_title: userMapsQueryResults, favorited_maps: userFavoritedQueryResults, map_id: req.session.map_id};
+  const templateVars = { user_id: req.session['user_id'], email: req.session['email'], map_title: userMapsQueryResults, favorited_maps: userFavoritedQueryResults};
   //console.log("TEMPLATEVARS", templateVars);
   //map_title:
   // [ anonymous { id: 1, title: 'Best Little Italy Spots' },
