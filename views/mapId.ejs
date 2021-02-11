@@ -28,10 +28,29 @@
 
     <div id="map"></div>
 
+
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAcgyKfKOGItTDzqDIuXCxXiaAZRLK-TjA&"
     async defer></script>
     <script src="/scripts/map.js"></script>
+    <script>
+      const localMarkers = [];
+      let longitude;
+      let latitude;
+    </script>
+    <% for (let marker of markers) { %>
+      <script>
+        longitude = '<%-marker.longitude%>';
+        latitude = '<%-marker.latitude%>';
+        localMarkers.push({longitude, latitude});
+      </script>
+      <% }%>
+    <script>
+      $(document).ready(() => {
+        console.log(localMarkers);
+        window.initMap(localMarkers);
 
+      });
+    </script>
       <label>YOUR MAP ID is: <%= `${map_id}` %></label>
       <label>YOUR MAP ID is: <%= `${map_title}` %></label>
 
