@@ -1,15 +1,20 @@
-
 $(document).ready(() => {
   window.initMap = (markers) => {
+    let centerMap;
+    if (markers.length > 0) {
+      centerMap = { lat: parseFloat(markers[0].latitude), lng:parseFloat(markers[0].longitude)};
+    } else {
+      centerMap = { lat: 43.6532, lng: -79.3832 }
+    }
 
-    const tdot = { lat: 43.6532, lng: -79.3832};
+
     let map = new google.maps.Map(document.getElementById("map"), {
       zoom: 13,
-      center: tdot
+      center: centerMap
     });
-    console.log(markers);
+    //console.log(markers);
     for (let marker of markers) {
-      console.log(marker);
+      //console.log(marker);
       if (marker){
         addMarker({
           lat: parseFloat(marker.latitude),
@@ -124,9 +129,3 @@ $(document).ready(() => {
 
 
 });
-
-
-
-
-
-
