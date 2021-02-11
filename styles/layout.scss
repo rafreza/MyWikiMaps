@@ -89,9 +89,7 @@ body {
   height: 350px;
   width: 700px;
   background-color: wheat;
-  display: flex;
-  flex-direction: column;
-
+  display: table-caption;
 
 }
 
@@ -107,5 +105,14 @@ img {
 }
 
 h3 {
+  font-family:'Gudea', sans-serif;
+  font-size: 1.75em;
   float: right;
+}
+
+h5 {
+  font-family:'Gudea', sans-serif;
+  font-size: 1.3em;
+  margin-top: 6em;
+  font-style: italic;
 }
