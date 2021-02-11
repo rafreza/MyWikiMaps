@@ -34,10 +34,10 @@
         <% } %>
       </ul>
       <div class="created"></div>
-      <h3>Favourite Maps</h3>
+      <h2>Favourite Maps</h2>
       <ul>
         <% for (let favorites of favorited_maps) { %>
-          <li><%= favorites.title %></li>
+          <li><a href="http://localhost:8080/maps/<%= favorites.id %>"><%= favorites.title %></a></li>
           <% } %>
       </ul>
     </div>
