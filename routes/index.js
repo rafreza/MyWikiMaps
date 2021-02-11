@@ -26,5 +26,19 @@ router.get("/", (req, res) => {
   })
 });
 
+router.post("/", (req, res) => {
+  const templateVars = { user_id: req.session['user_id'], }
+  const queryString = `
+  INSERT INTO favorites (user_id, map_id)
+  VALUES ($1, $2)
+  RETURNING user_id, map_id;`
+  return pool.query(queryString, templateVars)
+  .then(results => {
+    favMaps = results.rows;
+    console.log(favMaps);
+  })
+})
+
+
 
 module.exports = router;
