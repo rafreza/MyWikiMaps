@@ -8,7 +8,7 @@ router.get("/", (req, res) => {
   let user_id= req.session.user_id;
 
   const queryDisplayingMaps = `
-  SELECT image_url, title, description
+  SELECT image_url, title, description, id
   FROM maps
   WHERE user_id = $1;
   `
