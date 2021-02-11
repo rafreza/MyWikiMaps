@@ -34,8 +34,29 @@ router.get("/profile/:userId", (req, res) => {
 //   anonymous { id: 36, title: 'this is the fun map' },
 //   anonymous { id: 37, title: 'My new map' } ]
 
-  const templateVars = { user_id: req.session['user_id'], email: req.session['email'], map_title: userMapsQueryResults };
-  res.render('profile', templateVars);;
+const queryDisplayFavoritedMaps = `
+  SELECT DISTINCT favorites.id, title FROM maps
+  JOIN favorites ON maps.id = map_id
+  WHERE favorites.user_id = $1;
+  `
+
+  return pool.query(queryDisplayFavoritedMaps, [user_id])
+  .then( results2 => {
+
+    userFavoritedQueryResults = results2.rows
+
+
+  const templateVars = { user_id: req.session['user_id'], email: req.session['email'], map_title: userMapsQueryResults, favorited_maps: userFavoritedQueryResults, map_id: req.session.map_id};
+  //console.log("TEMPLATEVARS", templateVars);
+  //map_title:
+  // [ anonymous { id: 1, title: 'Best Little Italy Spots' },
+    //anonymous { id: 2, title: 'Best Poutines in Montreal' } ],
+  //favorited_maps: [ anonymous { id: 1, title: 'Best Little Italy Spots' } ] }
+  res.render('profile', templateVars);
+
+
+})
+
 
   })
      .catch( err => { console.log('query error:', err)});
@@ -43,6 +64,5 @@ router.get("/profile/:userId", (req, res) => {
 });
 
 module.exports = router;
-
 
 
