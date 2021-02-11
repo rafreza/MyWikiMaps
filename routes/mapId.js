@@ -15,7 +15,7 @@ router.get("/maps/:mapId", (req, res) => {
   .then( results => {
 
     console.log(results.rows);
-    templateVars.markers = results.rows.map(x => ({longitude: x.longitude, latitude: x.latitude }));
+    templateVars.markers = results.rows;
     console.log(templateVars);
     res.render("mapId", templateVars);
   });

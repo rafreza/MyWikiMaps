@@ -57,11 +57,10 @@ $(document).ready(() => {
     });
 
   };
-  //window.initMap();
+
 
   let mapId = window.location.pathname.substring(window.location.pathname.lastIndexOf('/'));
   const newMapId = mapId.slice(1);
-  console.log("mapId:", newMapId);
 
 
   const addMarker = (location, map) => {

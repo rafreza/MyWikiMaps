@@ -34,21 +34,23 @@
     <script src="/scripts/map.js"></script>
     <script>
       const localMarkers = [];
-      let longitude;
-      let latitude;
+      let title, description, image_url, address, longitude, latitude;
     </script>
     <% for (let marker of markers) { %>
       <script>
+        title = '<%-marker.title%>';
+        description = '<%-marker.description%>';
+        image_url = '<%-marker.image_url%>';
+        address = '<%-marker.address%>';
         longitude = '<%-marker.longitude%>';
         latitude = '<%-marker.latitude%>';
-        localMarkers.push({longitude, latitude});
+        localMarkers.push({title, description, image_url, address, longitude, latitude});
       </script>
       <% }%>
     <script>
       $(document).ready(() => {
         console.log(localMarkers);
         window.initMap(localMarkers);
-
       });
     </script>
       <label>YOUR MAP ID is: <%= `${map_id}` %></label>
