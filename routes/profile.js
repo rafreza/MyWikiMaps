@@ -11,7 +11,6 @@ router.get("/profile/:userId", (req, res) => {
 
   let userMaps = [];
 
-  console.log("THIS IS THE USER ID YOURE LOOKING FOR GALIT: ", user_id)
   const queryDisplayCreatedMaps = `
   SELECT id, title
   FROM MAPS
