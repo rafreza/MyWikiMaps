@@ -96,8 +96,24 @@ body {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
+  float: right;
+  margin-top: 8.2em;
+  margin-right: 0.5em;
 
 }
+#heart {
+  margin-right: 0.5em;
+}
+a.globe{
+  margin-right: 0.5em;
+}
+#heart:hover {
+  color:red;
+}
+#globe:hover {
+  color:blue;
+}
+
 #allMaps {
   display: flex;
   flex-direction: column;

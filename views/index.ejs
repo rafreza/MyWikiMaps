@@ -40,8 +40,9 @@
         <h3><%= info.title %></h3>
         <h5>"<%= info.description %>"</h5>
         <div class='icons'>
-        <i class="fas fa-heart"></i>
-        <i class="fas fa-globe-africa"></i>
+        <i id='heart' class="fas fa-heart" ></i>
+        <a href="http://localhost:8080/maps/<%= info.id %>" class="globe"><i class="fas fa-globe-africa"></i></a>
+
         </div>
 
         <% } %>
