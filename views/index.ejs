@@ -30,20 +30,16 @@
     <%- include('partials/_header') %>
 
     <section id="allMaps">
+      <% for (let info of mapInfo) { %>
     <div class="boxed">
       <body>
-        <img src="https://cache-graphicslib.viator.com/graphicslib/thumbs674x446/37232/SITours/dinner-with-chef-little-italy-vip-food-tour-in-toronto-395768.jpg" height= "334" width= "350"/>
-        <h3>Best Little Italy Spots</h3>
-        </body>
+        <img src= <%= info.image_url %> height= "334" width= "350"/>
+        <h3><%= info.title %></h3>
+        <% } %>
+      </body>
 
-    </div>
-    <div class="boxed">
-      <body>
-        <img src="https://www.favfamilyrecipes.com/wp-content/uploads/2018/09/Poutine-500x500.jpg" height= "334" width= "350"/>
-        <h3>Best Poutines in Montreal</h3>
-        </body>
-    </div>
-  </section>
+
+
 
 
 </html>

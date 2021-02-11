@@ -5,12 +5,25 @@ const app = express();
 
 router.get("/", (req, res) => {
 
-  let map_id = req.session.map_id;
+  let user_id= req.session.user_id;
+
+  const queryDisplayingMaps = `
+  SELECT image_url, title, description
+  FROM maps
+  WHERE user_id = $1;
+  `
+
+  return pool.query(queryDisplayingMaps, [user_id])
+  .then(results => {
+
+  mapInformationResults = results.rows;
 
 
 
-  const templateVars = { user_id: req.session['user_id'], email: req.session['email']}
+
+  const templateVars = { user_id: req.session['user_id'], email: req.session['email'], mapInfo: mapInformationResults}
   res.render("index", templateVars);
+  })
 });
 
 
