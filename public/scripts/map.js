@@ -8,14 +8,17 @@ $(document).ready(() => {
       center: tdot
     });
     console.log(markers);
-    let firstMarker = markers[0];
-    console.log(firstMarker);
-    if (firstMarker){
-    addMarker({
-      lat: parseFloat(firstMarker.latitude),
-      lng: parseFloat(firstMarker.longitude)
+    for (let marker of markers) {
+      console.log(marker);
+      if (marker){
+        addMarker({
+          lat: parseFloat(marker.latitude),
+          lng: parseFloat(marker.longitude)
 
-    }, map);
+        }, map);
+    }
+
+
     }
     $(document).on("submit", (function(e) {
       e.preventDefault();

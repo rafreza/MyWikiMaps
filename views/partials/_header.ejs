@@ -10,7 +10,11 @@
       <% if(user_id){ %>
         <span class="loggedInOptions">
         <a class="button" href="http://localhost:8080/maps">Create a Map</a>
-        <a class="button" href="http://localhost:8080/profile">My Maps</a>
+        <form action="/profile/:<%= user_id %>" method="GET">
+
+          <button class="button" type="submit">My Maps</button>
+        </form>
+        <!-- <a class="button" action="/profile" method="GET" href="http://localhost:8080/profile/<%= user_id%>>My Maps</a> -->
         <form action="/logout" method="POST">
           <!-- <label>Logged in as: <%= user_id.email %></label> -->
           <button type="submit">Logout</button>

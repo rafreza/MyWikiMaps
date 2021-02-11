@@ -82,4 +82,19 @@ body {
   padding-top: em;
 }
 
+.boxed {
 
+  border: 2px solid red;
+  margin-top: 8em;
+  height: 350px;
+  width: 650px;
+
+
+}
+
+#allMaps {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}

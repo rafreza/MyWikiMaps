@@ -12,7 +12,7 @@ router.get("/login", (req, res) => {
 router.post("/login", (req, res) => {
 
   let { email, password } = req.body;
-  console.log({email, password})
+  // console.log({email, password})
 
   // ACCESSING DB TO VERIFY THAT EMAIL EXISTS =>
 
@@ -33,9 +33,11 @@ router.post("/login", (req, res) => {
           console.log("we're in")
 
             /// Adding into session object ---user_id = key --> and results.rows[0].id = value
-          req.session['user_id'] = results.rows[0].id;
+          const userId = results.rows[0].id;
           req.session['email'] = results.rows[0].email;
-          res.redirect("/");
+
+          req.session['user_id'] = userId;
+          res.redirect(`/profile/:${userId}`);
 
         } else {
           //if password not correct
