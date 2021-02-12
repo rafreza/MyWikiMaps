@@ -5,7 +5,7 @@
 
 <header>
   <nav>
-    <span class="top-nav-bar">
+    <div class="top-nav-bar">
       <a href="http://localhost:8080/" id=brand>WikiMaps</a>
       <% if(user_id){ %>
         <span class="loggedInOptions">
@@ -17,11 +17,14 @@
           <!-- <label>Logged in as: <%= user_id.email %></label> -->
           <button class ="button" type="submit">Logout</button>
           <!-- <label>Logged in as: <%= email %></label> -->
+        </span>
           </form>
       <% } else{ %>
         <span class="authentication">
         <a class="button" href="http://localhost:8080/login">Login</a>
         <a class="button" href="http://localhost:8080/register">Register</a>
+        </span>
       <% } %>
+      </div>
     </nav>
 </header>
