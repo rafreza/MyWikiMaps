@@ -19,9 +19,6 @@ router.get("/", (req, res) => {
   mapInformationResults = results.rows;
 
 
-
-
-
   const templateVars = { user_id: req.session['user_id'], email: req.session['email'], mapInfo: mapInformationResults, map_id: req.session['map_id']}
   res.render("index", templateVars);
   })
@@ -29,16 +26,21 @@ router.get("/", (req, res) => {
 });
 
 router.post("/", (req, res) => {
-  const templateVars = { user_id: req.session['user_id'], }
-  const queryString = `
-  INSERT INTO favorites (user_id, map_id)
-  VALUES ($1, $2)
-  RETURNING user_id, map_id;`
-  return pool.query(queryString, templateVars)
-  .then(results => {
-    favMaps = results.rows;
-    console.log(favMaps);
-  })
+
+    let IDs = req.body;
+
+    const queryString = `
+    INSERT INTO favorites (user_id, map_id)
+    VALUES ($1, $2)
+    RETURNING user_id, map_id;`
+
+
+    return pool.query(queryString, [IDs.userId, IDs.mapId])
+    .then(results => {
+      res.redirect('/');
+    })
+
+
 })
 
 
