@@ -57,12 +57,11 @@ $(document).ready(() => {
 
 
     google.maps.event.addListener(map, "click", (e) => {
-      for (let marker of markers) {
-        if (e.latLng.lng() !== parseFloat(marker.latitude)){
-          addNewMarker(e.latLng, map);
-          break;
-        };
-      }
+
+
+      addNewMarker(e.latLng, map);
+
+
 
     });
 
