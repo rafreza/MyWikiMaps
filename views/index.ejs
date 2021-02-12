@@ -42,10 +42,10 @@
         <div class='icons'>
           <!-- <a href="http://localhost:8080/profile/:<%=user_id%>" class="heart"><i id='heart' class="fas fa-heart" ></i></a> -->
           <form method="POST" action="/" class = "inline">
-
             <input type="hidden" name ="mapId" value = "<%= info.id %>">
             <input type="hidden" name ="userId" value = "<%= user_id %>">
-            <button type="submit">Favourite!</button>
+            <button type="submit" style="border: 0; background: none;">
+              <i class="fas fa-heart"></i></button>
           </form>
 
 
