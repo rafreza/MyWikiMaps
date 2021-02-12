@@ -30,14 +30,13 @@ router.post("/login", (req, res) => {
 
         // verify that password is correct
         if(bcrypt.compareSync(password, hashedPassword)) {
-          console.log("we're in")
 
             /// Adding into session object ---user_id = key --> and results.rows[0].id = value
           const userId = results.rows[0].id;
           req.session['email'] = results.rows[0].email;
 
           req.session['user_id'] = userId;
-          res.redirect(`/profile/:${userId}`);
+          res.redirect(`/maps`);
 
         } else {
           //if password not correct

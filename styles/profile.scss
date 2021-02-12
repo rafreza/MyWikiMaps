@@ -17,13 +17,10 @@ li {
   list-style-type: none;
 }
 
-// table {
-//   background-color: #fefae0;
-// }
-
 table, th, td {
-  border: 3px solid #4CAF50;
-  background-color: #fefae0;
+  border: 2px solid #6b9080;
+  border-radius: 25px;
+  background-color: #e5e6e4;
   width: 50%;
 }
 
@@ -39,12 +36,18 @@ i {
 .rows {
   margin: 5px;
   font-family: 'Cairo', sans-serif;
-  color: #4CAF50;
+  color: #6b9080;
+  font-weight: 900;
+}
+
+.rows:hover {
+  color:#2b2d42;
 }
 
 a {
   font-family: 'Cairo', sans-serif;
-  color: red;
+  color: black;
+  font-weight: 900;
 }
 
 tr {
