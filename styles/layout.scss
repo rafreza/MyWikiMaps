@@ -1,7 +1,7 @@
 // See: https://sass-lang.com/
 
 .error-message {
-  color: black;
+  color: #0f4c5c;
   padding-bottom: 5%;
   font-weight: bold;
 }
@@ -18,10 +18,10 @@ body {
 }
 
   h1 {
-    color: #010f13;
+    color:#0f4c5c;
   }
 
-  .button-to-authenticate:hover {background-color: #244751}
+  .button-to-authenticate:hover {color: #f28482}
 
   .button-to-authenticate {
     padding: 10px 30px;
@@ -72,14 +72,15 @@ body {
   width: 100%;
   height: 100%;
   margin-top: 5em;
-  color: #010f13;
+  color: #0f4c5c;
 }
 
 .input-field {
   margin: 5px;
   font-weight: 100;
   font-style: italic;
-  color: black;
+  color: #0f4c5c;
+  width: 350px;
 }
 
 #create {
@@ -91,7 +92,7 @@ body {
   border: 3.5px solid #6b9080;
   border-radius: 25px;
   background-color: #e5e6e4;
-  margin-top: 8em;
+  margin-top: 9em;
   height: 350px;
   width: 700px;
   display: table-caption;
@@ -103,24 +104,25 @@ img {
   height: 250px;
   margin: 35px;
 }
-.icons {
+#icons {
   display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-  float: right;
-  margin-top: 8.2em;
-  margin-right: 0.5em;
-
-}
-#heart {
-  margin-right: 0.5em;
+    flex-direction: row;
+    justify-content: flex-end;
+    padding-bottom: 65px;
+    padding-left: 65px;
+    padding-right: 35px;
+    padding-top: 18px;
+    border-top: 2.5px solid #6b9080;
 }
 
-#heart:hover {
-  color:red;
+i {
+  margin-right: 0.5em;
+  color: #6b9080;
+  font-size: 22px;
 }
-#globe:hover {
-  color:blue;
+
+i:hover {
+  color: #f28482;
 }
 
 #allMaps {
@@ -140,6 +142,7 @@ h3 {
   padding-top: 45px;
   padding-right: 35px;
   padding-left: 35px;
+  color: #0f4c5c;
 }
 
 h5 {
@@ -148,4 +151,5 @@ h5 {
   font-style: italic;
   font-weight: 100;
   margin-top: -15px;
+  color: #0f4c5c;
 }
