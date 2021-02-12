@@ -1,9 +1,11 @@
 // See: https://sass-lang.com/
 
 .error-message {
-  color: #0f4c5c;
-  padding-bottom: 5%;
+  color: #f28482;
+  padding-bottom: 1%;
   font-weight: bold;
+  margin-top: -20px;
+  margin-left: -40px;
 }
 
 body {
@@ -36,6 +38,7 @@ body {
     border: none;
     border-radius: 15px;
     margin: 5%;
+    margin-left: 25%;
   }
 
 
