@@ -7,10 +7,9 @@ nav {
   height: 120px;
   width: 100%;
   z-index: 100;
-  background-color: #6b9080;
-  color: #ffffff;
+  background-color: #6B9080;
+  color: #FFFFFF;
 }
-
 .loggedInOptions {
  display: flex;
  justify-content: end;
@@ -28,46 +27,39 @@ nav #brand {
   color:#ffffff;
   text-decoration: none;
 }
-
 #brand:hover {
   color:#f28482;
 }
-
 .button {
   font-family: 'Rancho', cursive;
   font-size: 1.5em;
-  color: #ffffff;
+  color: #FFFFFF;
   display: flex;
   text-decoration: none;
   background-color: transparent;
   border: transparent;
 }
-
 button:hover {
   color:#f28482;
 }
 button:focus {
   outline:0;
 }
-
 a:hover {
   color:#f28482;
 }
 a {
   text-decoration: none !important;
 }
-
 .authentication {
   width: 25%;
   display: flex;
   align-items: center;
   justify-content: space-around;
 }
-
 .loggedInOptions {
   width: 500px;
   display: flex;
   align-items: center;
   justify-content: space-around;
 }
-

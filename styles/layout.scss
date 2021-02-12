@@ -1,34 +1,24 @@
 // See: https://sass-lang.com/
 
 .error-message {
-<<<<<<< HEAD
-  color: black;
-  padding-bottom: 5%;
-=======
-  color: #f28482;
+  color: #F28482;
   padding-bottom: 1%;
->>>>>>> 764b8e9b514f94038051c8402d0e9af4b7662747
   font-weight: bold;
   margin-top: -20px;
   margin-left: -40px;
 }
-
 body {
   background: url(https://images.pexels.com/photos/2255/black-and-white-city-houses-skyline.jpg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260);
-
+  // background-repeat:no-repeat;
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
   background-attachment: fixed;
-
 }
-
   h1 {
-    color: #010f13;
+    color:#0f4c5c;
   }
-
-  .button-to-authenticate:hover {background-color: #244751}
-
+  .button-to-authenticate:hover {color: #F28482}
   .button-to-authenticate {
     padding: 10px 30px;
     font-size: 15px;
@@ -38,28 +28,22 @@ body {
     cursor: pointer;
     outline: none;
     color: #fff;
-    background-color: #6b9080;
+    background-color: #6B9080;
     border: none;
     border-radius: 15px;
     margin: 5%;
     margin-left: 25%;
   }
-
-
-
 .create-new-map {
   display: flex;
   justify-content: center;
 }
-
 #map {
   width: 1000px;
   height: 700px;
   margin: auto;
   z-index: 50;
 }
-
-
 #form {
   display: flex;
   flex-direction: column;
@@ -67,42 +51,37 @@ body {
   align-items: center;
   font-family: 'Cairo', sans-serif;
 }
-
 #form.login {
   width: 100%;
   height: 100%;
   margin-top: 5em;
   margin-right: 3em;
 }
-
 #form.register {
   width: 100%;
   height: 100%;
   margin-top: 5em;
-  color: #010f13;
+  color: #0F4C5C;
 }
-
 .input-field {
   margin: 5px;
   font-weight: 100;
   font-style: italic;
-  color: black;
+  color: #0F4C5C;
+  width: 350px;
 }
-
 #create {
   padding-top: em;
 }
-
 .boxed {
   font-family: 'Cairo', sans-serif;
-  border: 3.5px solid #6b9080;
+  border: 3.5px solid #6B9080;
   border-radius: 25px;
-  background-color: #e5e6e4;
-  margin-top: 8em;
+  background-color: #E5E6E4;
+  margin-top: 9em;
   height: 350px;
   width: 700px;
   display: table-caption;
-
 }
 img {
   border-radius: 45px;
@@ -110,45 +89,46 @@ img {
   height: 250px;
   margin: 35px;
 }
-.icons {
+#icons {
   display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-  float: right;
-  margin-top: 8.2em;
+    flex-direction: row;
+    justify-content: flex-end;
+    padding-bottom: 65px;
+    padding-left: 65px;
+    padding-right: 35px;
+    padding-top: 18px;
+    border-top: 2.5px solid #6B9080;
+}
+i {
   margin-right: 0.5em;
-
+  color: #6B9080;
+  font-size: 22px;
 }
-#heart {
-  margin-right: 0.5em;
+i:hover {
+  color: #F28482;
 }
-
-#heart:hover {
-  color:red;
-}
-#globe:hover {
-  color:blue;
-}
-
 #allMaps {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
 }
-
 img {
   float: left;
 }
-
 h3 {
   font-family: 'Cairo', sans-serif;
   font-size: 1.75em;
-  padding-top: 50px;
+  padding-top: 45px;
+  padding-right: 35px;
+  padding-left: 35px;
+  color: #0F4C5C;
 }
-
 h5 {
   font-family: 'Cairo', sans-serif;
-  font-size: 1.3em;
-  margin-top: 6em;
+  font-size: large;
+  font-style: italic;
+  font-weight: 100;
+  margin-top: -15px;
+  color: #0F4C5C;
 }
