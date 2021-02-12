@@ -39,29 +39,22 @@
         <img src= <%= info.image_url %> height= "334" width= "350"/>
         <h3><%= info.title %></h3>
         <h5>"<%= info.description %>"</h5>
-        <div class='icons'>
+        <div id="icons">
+        <!-- <div class='icons'> -->
           <!-- <a href="http://localhost:8080/profile/:<%=user_id%>" class="heart"><i id='heart' class="fas fa-heart" ></i></a> -->
           <form method="POST" action="/" class = "inline">
             <input type="hidden" name ="mapId" value = "<%= info.id %>">
             <input type="hidden" name ="userId" value = "<%= user_id %>">
             <button type="submit" style="border: 0; background: none;">
+
               <i class="fas fa-heart"></i></button>
           </form>
-
-
           <a href="http://localhost:8080/maps/<%= info.id %>" class="globe" style= "text-decoration: none;">
             <i class="fas fa-globe-africa"></i>
           </a>
-
         </div>
-
+        <!-- </div> -->
+      </div>
         <% } %>
-
       </body>
-    </div>
-
-
-
-
-
 </html>
