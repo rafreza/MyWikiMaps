@@ -17,13 +17,9 @@ li {
   list-style-type: none;
 }
 
-// table {
-//   background-color: #fefae0;
-// }
-
 table, th, td {
-  border: 3px solid #4CAF50;
-  background-color: #fefae0;
+  border: 2px solid #6b9080;
+  background-color: #e5e6e4;
   width: 50%;
 }
 
@@ -39,12 +35,13 @@ i {
 .rows {
   margin: 5px;
   font-family: 'Cairo', sans-serif;
-  color: #4CAF50;
+  color: #6b9080;
 }
 
 a {
   font-family: 'Cairo', sans-serif;
-  color: red;
+  color: black;
+  font-weight: 700;
 }
 
 tr {
