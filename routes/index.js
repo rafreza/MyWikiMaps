@@ -25,6 +25,7 @@ router.get("/", (req, res) => {
   const templateVars = { user_id: req.session['user_id'], email: req.session['email'], mapInfo: mapInformationResults, map_id: req.session['map_id']}
   res.render("index", templateVars);
   })
+
   .catch( err => { console.log('query error:', err)});
 });
 
