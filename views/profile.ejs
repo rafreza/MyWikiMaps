@@ -29,26 +29,32 @@
 <body>
   <%- include('partials/_header') %>
   <div id=profile-info >
-  <table>
+
   <!-- <h2><%= email %>'s Activity</h2> -->
-  <tr>
-    <h2 class="created-favorited">Maps Created</h2>
-  </tr>
-  <td>
+
+    <table>
+      <tr>
+        <h2 class="created-favorited">Maps Created</h2>
+      </tr>
+      <td>
       <% for (let map of map_title) { %>
         <li class="rows"><i class="fas fa-map-marker-alt"></i><a href="http://localhost:8080/maps/<%= map.id %>"><%= map.title %></a></li>
         <% } %>
       </td>
     </table>
-      <table>
-      <tr><h2 class="created-favorited"> Favourite Maps</h2></tr>
 
     <td>
+      <table>
+        <tr>
+          <h2 class="created-favorited"> Favourite Maps</h2>
+        </tr>
+        <td>
         <% for (let favorites of favorited_maps) { %>
           <li class="rows"><i class="fas fa-map-marker-alt"></i><a href="http://localhost:8080/maps/<%= favorites.id %>"><%= favorites.title %></a></li>
           <% } %>
       </td>
-    </div>
+
   </table>
+</div>
 </body>
 </html>

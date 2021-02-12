@@ -3,12 +3,15 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
-    integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
     <!-- AwesomeFonts-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"
     integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w==" crossorigin="anonymous" />
+      <!-- Google Fonts-->
+      <link rel="preconnect" href="https://fonts.gstatic.com">
+      <link href="https://fonts.googleapis.com/css2?family=Rancho&display=swap" rel="stylesheet">
+      <link rel="preconnect" href="https://fonts.gstatic.com">
+      <link href="https://fonts.googleapis.com/css2?family=Cairo&display=swap" rel="stylesheet">
 
     <title>WikiMaps</title>
 
@@ -16,9 +19,6 @@
     <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
     <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
     <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
-
-
-
 
 
 
@@ -40,8 +40,18 @@
         <h3><%= info.title %></h3>
         <h5>"<%= info.description %>"</h5>
         <div class='icons'>
-        <i id='heart' class="fas fa-heart" ></i>
-        <a href="http://localhost:8080/maps/<%= info.id %>" class="globe"><i class="fas fa-globe-africa"></i></a>
+          <!-- <a href="http://localhost:8080/profile/:<%=user_id%>" class="heart"><i id='heart' class="fas fa-heart" ></i></a> -->
+          <form method="POST" action="/" class = "inline">
+
+            <input type="hidden" name ="mapId" value = "<%= info.id %>">
+            <input type="hidden" name ="userId" value = "<%= user_id %>">
+            <button type="submit">Favourite!</button>
+          </form>
+
+
+          <a href="http://localhost:8080/maps/<%= info.id %>" class="globe" style= "text-decoration: none;">
+            <i class="fas fa-globe-africa"></i>
+          </a>
 
         </div>
 
