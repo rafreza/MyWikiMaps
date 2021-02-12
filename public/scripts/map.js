@@ -57,12 +57,7 @@ $(document).ready(() => {
 
 
     google.maps.event.addListener(map, "click", (e) => {
-
-
       addNewMarker(e.latLng, map);
-
-
-
     });
 
   };
